@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ HEAD
 
 :root {
   --purple: #6557ff;
@@ -1328,7 +1328,7 @@ a {
     }
   }
 }
-=======
+
 
 :root {
   --purple: #6557ff;
@@ -2041,5 +2041,4 @@ a {
   .contact h2 span:hover {
     transform: none;
   }
-}
->>>>>>> de6172fe08eca6155370648d028c3e1e021dcbbb
+  
