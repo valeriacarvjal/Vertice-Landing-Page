@@ -654,7 +654,7 @@ a {
 }
 
 .face-phone::before {
-  content: "↗";
+  content: "";
 }
 
 /* =================================
@@ -1063,5 +1063,25 @@ a {
 
   .face-eye i {
     animation: none;
+  }
+}
+@media (max-width: 600px) {
+  .face-character {
+    position: relative;
+    margin: 0 auto 2rem;
+    transform: scale(0.8);
+    transform-origin: center top;
+  }
+
+  .contact h2,
+  .contact p,
+  .contact .contact-button {
+    position: relative;
+    z-index: 2;
+  }
+
+  .face-caption {
+    justify-content: center;
+    gap: 0.5rem;
   }
 }
