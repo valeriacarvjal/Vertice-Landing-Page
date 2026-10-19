@@ -711,3 +711,619 @@ a {
     transform: none;
   }
 }
+
+/* VÉRTICE — personaje de contacto */
+.contact {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-character {
+  position: absolute;
+  z-index: 2;
+  right: 2%;
+  top: 46%;
+  width: clamp(180px, 24vw, 330px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translate(100px, -35%) rotate(5deg);
+  pointer-events: none;
+}
+
+.contact-character.is-visible {
+  animation: character-enter 1s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px #30216b35);
+  animation: character-float 3.5s ease-in-out 1s infinite;
+}
+
+.character-message {
+  align-self: flex-start;
+  margin: 0 0 -8px -8px;
+  padding: 12px 17px;
+  border: 1px solid #ffffff80;
+  border-radius: 50px;
+  background: #fff8e9;
+  color: #292044;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  box-shadow: 0 8px 25px #30216b20;
+  transform: rotate(-6deg);
+}
+
+.character-message span {
+  margin-left: 7px;
+  color: #ff9855;
+}
+
+@keyframes character-enter {
+  0% {
+    opacity: 0;
+    transform: translate(100px, -35%) rotate(5deg);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-8px, -35%) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, -35%) rotate(0);
+  }
+}
+
+@keyframes character-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-character {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 155px;
+    align-self: flex-end;
+    margin: 25px -5px 15px 0;
+    transform: translateX(60px);
+  }
+
+  .contact-character.is-visible {
+    animation: character-enter-mobile .8s ease forwards;
+  }
+
+  @keyframes character-enter-mobile {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .character-message {
+    font-size: 9px;
+    padding: 9px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-character,
+  .contact-character.is-visible,
+  .character-image {
+    animation: none;
+    transition: none;
+  }
+
+  .contact-character.is-visible {
+    opacity: 1;
+    transform: translate(0, -35%);
+  }
+}
+
+/* VÉRTICE — carita curiosa */
+.contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.vertice-face {
+  position: absolute;
+  z-index: 5;
+  right: -130px;
+  top: 48%;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff0d9, #ff9855);
+  border: 3px solid #ffffffa8;
+  box-shadow:
+    0 12px 35px #34205b35,
+    inset -8px -8px 18px #e77c4b35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.vertice-face.is-visible {
+  animation: face-peek 1s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.face-eyes {
+  display: flex;
+  gap: 16px;
+}
+
+.face-eye {
+  width: 20px;
+  height: 25px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.face-eye i {
+  width: 9px;
+  height: 12px;
+  background: #302044;
+  border-radius: 50%;
+  display: block;
+  animation: eyes-look 3s ease-in-out infinite;
+}
+
+.face-mouth {
+  width: 17px;
+  height: 9px;
+  border-bottom: 3px solid #302044;
+  border-radius: 0 0 50% 50%;
+  margin-top: -5px;
+}
+
+@keyframes face-peek {
+  0% {
+    right: -130px;
+    opacity: 0;
+    transform: translateY(-50%) rotate(15deg);
+  }
+  75% {
+    right: 4%;
+    opacity: 1;
+    transform: translateY(-50%) rotate(-7deg);
+  }
+  100% {
+    right: 3%;
+    opacity: 1;
+    transform: translateY(-50%) rotate(0);
+  }
+}
+
+@keyframes eyes-look {
+  0%, 35%, 100% { transform: translateX(0); }
+  45%, 65% { transform: translateX(4px); }
+  75%, 90% { transform: translateX(-3px); }
+}
+
+@media (max-width: 700px) {
+  .vertice-face {
+    width: 72px;
+    height: 72px;
+    right: -90px;
+    top: 28%;
+  }
+
+  .face-eyes {
+    gap: 10px;
+  }
+
+  .face-eye {
+    width: 15px;
+    height: 19px;
+  }
+
+  .face-eye i {
+    width: 7px;
+    height: 9px;
+  }
+
+  .face-mouth {
+    width: 13px;
+    height: 7px;
+  }
+
+  @keyframes face-peek {
+    0% {
+      right: -90px;
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+    100% {
+      right: 4%;
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vertice-face.is-visible,
+  .face-eye i {
+    animation: none;
+  }
+
+  .vertice-face.is-visible {
+    right: 3%;
+    opacity: 1;
+  }
+}
+
+/* Carita VÉRTICE: versión visible */
+.contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.vertice-face {
+  position: absolute;
+  top: 45%;
+  right: 4%;
+  z-index: 20;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff0d9, #ff9855);
+  border: 3px solid white;
+  box-shadow: 0 12px 35px #34205b35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  transform: translateY(-50%);
+  opacity: 1;
+  animation: face-appear 1s ease-out both;
+}
+
+.face-eyes {
+  display: flex;
+  gap: 16px;
+}
+
+.face-eye {
+  width: 20px;
+  height: 25px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.face-eye i {
+  display: block;
+  width: 9px;
+  height: 12px;
+  border-radius: 50%;
+  background: #302044;
+  animation: eyes-look 3s ease-in-out infinite;
+}
+
+.face-mouth {
+  width: 17px;
+  height: 9px;
+  border-bottom: 3px solid #302044;
+  border-radius: 50%;
+  margin-top: -5px;
+}
+
+@keyframes face-appear {
+  from {
+    transform: translate(60px, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes eyes-look {
+  0%, 35%, 100% { transform: translateX(0); }
+  45%, 65% { transform: translateX(4px); }
+  75%, 90% { transform: translateX(-3px); }
+}
+
+@media (max-width: 700px) {
+  .vertice-face {
+    width: 72px;
+    height: 72px;
+    top: 30%;
+    right: 4%;
+  }
+
+  .face-eyes { gap: 10px; }
+
+  .face-eye {
+    width: 15px;
+    height: 19px;
+  }
+
+  .face-eye i {
+    width: 7px;
+    height: 9px;
+  }
+
+  .face-mouth {
+    width: 13px;
+    height: 7px;
+  }
+}
+
+/* Carita VÉRTICE XL */
+.vertice-face {
+  width: 200px;
+  height: 200px;
+  right: 5%;
+  border-width: 5px;
+  gap: 25px;
+  box-shadow: 0 20px 55px #34205b45;
+}
+
+.face-eyes {
+  gap: 30px;
+}
+
+.face-eye {
+  width: 42px;
+  height: 52px;
+}
+
+.face-eye i {
+  width: 19px;
+  height: 25px;
+}
+
+.face-mouth {
+  width: 35px;
+  height: 18px;
+  border-bottom-width: 5px;
+  margin-top: -8px;
+}
+
+@media (max-width: 700px) {
+  .vertice-face {
+    width: 125px;
+    height: 125px;
+    right: 4%;
+    gap: 15px;
+  }
+
+  .face-eyes {
+    gap: 17px;
+  }
+
+  .face-eye {
+    width: 25px;
+    height: 31px;
+  }
+
+  .face-eye i {
+    width: 12px;
+    height: 15px;
+  }
+
+  .face-mouth {
+    width: 22px;
+    height: 11px;
+    border-bottom-width: 3px;
+  }
+}
+
+/* Centrar un poco más la carita */
+.vertice-face {
+  right: 30%;
+}
+
+@media (max-width: 700px) {
+  .vertice-face {
+    right: 25%;
+  }
+}
+
+/* Personaje VÉRTICE */
+.contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.face-character {
+  position: absolute;
+  z-index: 20;
+  top: 43%;
+  right: -280px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.face-character.is-visible {
+  animation: character-enter 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.vertice-face {
+  position: relative;
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 25%, #fff8e9 0%, transparent 35%),
+    linear-gradient(145deg, #fff0d9, #ff9855);
+  border: 5px solid #ffffffc9;
+  box-shadow: 0 20px 55px #34205b45;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.face-eyes {
+  display: flex;
+  gap: 30px;
+}
+
+.face-eye {
+  width: 42px;
+  height: 52px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.face-eye i {
+  width: 19px;
+  height: 25px;
+  border-radius: 50%;
+  background: #302044;
+  animation: eyes-look 3s ease-in-out infinite;
+}
+
+.face-mouth {
+  width: 35px;
+  height: 18px;
+  border-bottom: 5px solid #302044;
+  border-radius: 50%;
+  margin-top: -8px;
+}
+
+.face-caption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 17px;
+  background: #ffffffed;
+  color: #302044;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 25px #34205b25;
+}
+
+.face-phone {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: white;
+  background: #6557ff;
+  font-size: 19px;
+}
+
+@keyframes character-enter {
+  0% {
+    right: -280px;
+    opacity: 0;
+    transform: translateY(-50%) rotate(8deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-50%) rotate(-4deg);
+  }
+  100% {
+    right: 8%;
+    opacity: 1;
+    transform: translateY(-50%) rotate(0);
+  }
+}
+
+@keyframes eyes-look {
+  0%, 35%, 100% { transform: translateX(0); }
+  45%, 65% { transform: translateX(7px); }
+  75%, 90% { transform: translateX(-5px); }
+}
+
+@media (max-width: 700px) {
+  .face-character {
+    top: 32%;
+    gap: 8px;
+  }
+
+  .vertice-face {
+    width: 125px;
+    height: 125px;
+    border-width: 3px;
+    gap: 15px;
+  }
+
+  .face-eyes {
+    gap: 17px;
+  }
+
+  .face-eye {
+    width: 25px;
+    height: 31px;
+  }
+
+  .face-eye i {
+    width: 12px;
+    height: 15px;
+  }
+
+  .face-mouth {
+    width: 22px;
+    height: 11px;
+    border-bottom-width: 3px;
+  }
+
+  .face-caption {
+    gap: 6px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .face-phone {
+    width: 23px;
+    height: 23px;
+    font-size: 15px;
+  }
+
+  @keyframes character-enter {
+    0% {
+      right: -180px;
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+    100% {
+      right: 4%;
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+  }
+}

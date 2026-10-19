@@ -82,3 +82,62 @@ if (!reduceMotion) {
   window.addEventListener("resize", onScroll);
   updateParallax();
 }
+
+const contactCharacter = document.querySelector(".contact-character");
+
+if (contactCharacter) {
+  const contactObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          contactCharacter.classList.add("is-visible");
+          contactObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  contactObserver.observe(contactCharacter.closest(".contact"));
+}
+
+const verticeFace = document.querySelector(".vertice-face");
+
+if (verticeFace) {
+  const faceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          verticeFace.classList.add("is-visible");
+          faceObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  faceObserver.observe(verticeFace);
+}
+
+const faceCharacter = document.querySelector(".face-character");
+const contactSection = document.querySelector("#contact");
+
+if (faceCharacter && contactSection) {
+  const faceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          faceCharacter.classList.add("is-visible");
+          faceObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2
+    }
+  );
+
+  faceObserver.observe(contactSection);
+}
